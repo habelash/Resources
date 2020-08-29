@@ -35,9 +35,11 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Courses
             </a>
+            <!-- # TODO: Use loop for all the fields -->
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="./display.html">Edx</a>
-              <a class="dropdown-item" href="#">Udemy</a>
+                {% for cours in cour|slice:":2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'course' %}">View all</a>
             </div>
@@ -47,10 +49,11 @@
               Projects
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Resources</a>
-              <a class="dropdown-item" href="#">Websites</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'project' %}">View all</a>
+                {% for projs in proj|slice:"2" %}
+                    <a class="dropdown-item" href="{{ projs.url }}" target="_blank">{{ projs.name }}</a>
+                {% endfor %}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'project' %}">View all</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -58,8 +61,9 @@
               Languages
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Python</a>
-              <a class="dropdown-item" href="#">Java Script</a>
+            {% for subject in lang|slice:"2" %}
+                <a class="dropdown-item" href="{{ subject.url }}" target="_blank">{{ subject.name }}</a>
+            {% endfor %}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'language' %}">View all</a>
             </div>
@@ -69,8 +73,9 @@
               Frameworks
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Djanggo</a>
-              <a class="dropdown-item" href="#">Nodejs</a>
+            {% for subject in frame|slice:"2" %}
+                <a class="dropdown-item" href="{{ subject.url }}" target="_blank">{{ subject.name }}</a>
+            {% endfor %}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'framework' %}">View all</a>
             </div>
@@ -80,8 +85,9 @@
               Youtube Channel
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Anime View</a>
-              <a class="dropdown-item" href="#">Killer Volt</a>
+            {% for subject in youchan|slice:"2" %}
+                <a class="dropdown-item" href="{{ subject.url }}" target="_blank">{{ subject.name }}</a>
+            {% endfor %}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'youtubevideos' %}">View all</a>
             </div>
@@ -91,8 +97,9 @@
               Web Development
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Bootstrap</a>
-              <a class="dropdown-item" href="#">W3schools</a>
+            {% for subject in webdev|slice:"2" %}
+                <a class="dropdown-item" href="{{ subject.url }}" target="_blank">{{ subject.name }}</a>
+            {% endfor %}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'webdevelopment' %}">View all</a>
             </div>
@@ -102,8 +109,9 @@
               Important Websites
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              {% for subject in impweb|slice:"2" %}
+                <a class="dropdown-item" href="{{ subject.url }}" target="_blank">{{ subject.name }}</a>
+              {% endfor %}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'website' %}">View all</a>
             </div>

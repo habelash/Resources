@@ -1,4 +1,7 @@
 {% load static %}
+{% with domain='http://127.0.0.1:8000' %}
+
+{% endwith %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,7 +28,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-  
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -36,10 +39,11 @@
                 Courses
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="https://www.edx.org" target="_blank">Edx</a>
-                <a class="dropdown-item" href="#">Udemy</a>
+                {% for cours in cour|slice:"2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'course' %}">View all</a>
+                <a class="dropdown-item" href="{{ domain }}{% url 'course' %}">View all</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -47,10 +51,11 @@
                 Projects
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Resources</a>
-                <a class="dropdown-item" href="#">Websites</a>
+                {% for cours in proj|slice:"2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">View all</a>
+                <a class="dropdown-item" href="{{ domain }}{% url 'project' %}">View all</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -58,10 +63,11 @@
                 Websites
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">icons</a>
-                <a class="dropdown-item" href="#">goole</a>
+                {% for cours in impweb|slice:"2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">View all</a>
+                <a class="dropdown-item" href="{{ domain }}{% url 'website' %}">View all</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -69,10 +75,11 @@
                 Languages
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Python</a>
-                <a class="dropdown-item" href="#">Java Script</a>
+                {% for cours in lang|slice:"2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">View all</a>
+                <a class="dropdown-item" href="{{  domain }}{% url 'language' %}">View all</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -80,10 +87,11 @@
                 Frameworks
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Djanggo</a>
-                <a class="dropdown-item" href="#">Nodejs</a>
+                {% for cours in frame|slice:"2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">View all</a>
+                <a class="dropdown-item" href="{{ domain }}{% url 'framework' %}">View all</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -91,10 +99,11 @@
                 Web Development
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Bootstrap</a>
-                <a class="dropdown-item" href="#">W3schools</a>
+                {% for cours in webdev|slice:"2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">View all</a>
+                <a class="dropdown-item" href="{{ domain }}{% url 'webdevelopment' %}">View all</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -102,10 +111,11 @@
                 Youtube Channel
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Anime View</a>
-                <a class="dropdown-item" href="#">Killer Volt</a>
+                {% for cours in youchan|slice:"2" %}
+                    <a class="dropdown-item" href="{{ cours.url}}" target="_blank">{{ cours.name }}</a>
+                {% endfor %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">View all</a>
+                <a class="dropdown-item" href="{{ domain }}{% url 'youtubevideos' %}">View all</a>
               </div>
             </li>
           </ul>
